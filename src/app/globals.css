@@ -1,26 +1,115 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Brand tokens ───────────────────────────────────────────────────────
+   Referenced everywhere as bg-night, text-ember, border-line, etc.
+   No raw hex in components.
+   The base background is named `night`, not `base`, so it can't collide
+   with Tailwind's built-in `text-base` font-size utility. */
+@theme {
+  --color-night: #0a0b0f;
+  --color-surface: #14161d;
+  --color-ember: #e0793c;
+  --color-ember-deep: #b85a26;
+  --color-steel: #5b7c99;
+  --color-ink: #f1efea;
+  --color-muted: #8a8d96;
+  --color-line: #232733;
 }
 
+/* next/font injects the family as a CSS variable; `inline` lets the
+   font-display / font-sans utilities resolve straight to it. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-night);
+    color: var(--color-ink);
+    /* --font-inter is set on <html> by next/font. The theme block above is
+       `inline`, so it deliberately emits no --font-sans variable to read. */
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-ember) 32%, transparent);
+    color: var(--color-ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* One focus treatment for every interactive element on the page. Written as
+   plain CSS so it can't drift with utility renames. */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-ember);
+  outline-offset: 4px;
+}
+
+.focus-ring-steel:focus-visible {
+  outline: 2px solid var(--color-steel);
+  outline-offset: 4px;
+}
+
+/* Fraunces is variable — push optical size up and turn the "wonk" on so the
+   display face reads as a real display face, not a scaled-up text serif. */
+.crest-face {
+  font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 144;
+}
+
+.display-face {
+  font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 96;
+}
+
+/* Hairline technical grid — sits under the hero and the name section. */
+.grid-veil {
+  background-image:
+    linear-gradient(to right, rgba(91, 124, 153, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(91, 124, 153, 0.07) 1px, transparent 1px);
+  background-size: 5.5rem 5.5rem;
+  mask-image: radial-gradient(ellipse at 50% 40%, black 15%, transparent 72%);
+}
+
+/* Thin ember rule used between sections. */
+.hairline {
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--color-ember) 45%, transparent),
+    color-mix(in srgb, var(--color-steel) 40%, transparent),
+    transparent
+  );
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-night);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ember-deep);
 }
