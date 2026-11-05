@@ -6,14 +6,19 @@
    The base background is named `night`, not `base`, so it can't collide
    with Tailwind's built-in `text-base` font-size utility. */
 @theme {
-  --color-night: #0a0b0f;
-  --color-surface: #14161d;
+  --color-night: #08090d;
+  --color-surface: #12141c;
+  --color-surface-card: #151824;
+  --color-surface-hover: #1c2030;
   --color-ember: #e0793c;
+  --color-ember-light: #ff9d5c;
   --color-ember-deep: #b85a26;
   --color-steel: #5b7c99;
-  --color-ink: #f1efea;
-  --color-muted: #8a8d96;
-  --color-line: #232733;
+  --color-steel-light: #8ba9c4;
+  --color-ink: #f2f1ed;
+  --color-muted: #8b8f9b;
+  --color-line: #222635;
+  --color-line-glow: rgba(224, 121, 60, 0.3);
 }
 
 /* next/font injects the family as a CSS variable; `inline` lets the
@@ -21,6 +26,7 @@
 @theme inline {
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
 }
 
 @layer base {
@@ -113,3 +119,42 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-ember-deep);
 }
+
+/* Cybernetic terminal scanline overlay */
+.scanline-overlay {
+  background: linear-gradient(
+    rgba(18, 20, 28, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  ),
+  linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+}
+
+/* Glass card styling */
+.glass-panel {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 24, 36, 0.7) 0%,
+    rgba(12, 14, 20, 0.6) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(91, 124, 153, 0.16);
+}
+
+.glass-panel:hover {
+  border-color: rgba(224, 121, 60, 0.35);
+}
+
+/* Subtle glow badge */
+.cyber-badge {
+  background: rgba(224, 121, 60, 0.08);
+  border: 1px solid rgba(224, 121, 60, 0.25);
+  box-shadow: 0 0 15px -3px rgba(224, 121, 60, 0.15);
+}
+
