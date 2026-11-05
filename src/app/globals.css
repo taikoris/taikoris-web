@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
-/* ── Brand tokens ───────────────────────────────────────────────────────
-   Referenced everywhere as bg-night, text-ember, border-line, etc.
-   No raw hex in components.
-   The base background is named `night`, not `base`, so it can't collide
-   with Tailwind's built-in `text-base` font-size utility. */
+/* ── Enterprise Brand Tokens ──────────────────────────────────────────────
+   Engineered for modern B2B enterprise technology, cybersecurity, & SaaS. */
 @theme {
-  --color-night: #08090d;
-  --color-surface: #12141c;
-  --color-surface-card: #151824;
-  --color-surface-hover: #1c2030;
-  --color-ember: #e0793c;
-  --color-ember-light: #ff9d5c;
-  --color-ember-deep: #b85a26;
-  --color-steel: #5b7c99;
-  --color-steel-light: #8ba9c4;
-  --color-ink: #f2f1ed;
-  --color-muted: #8b8f9b;
-  --color-line: #222635;
-  --color-line-glow: rgba(224, 121, 60, 0.3);
+  --color-night: #060912;
+  --color-surface: #0c1220;
+  --color-surface-card: #10172a;
+  --color-surface-hover: #162038;
+  --color-primary: #2563eb;
+  --color-primary-light: #38bdf8;
+  --color-primary-deep: #1d4ed8;
+  --color-ember: #38bdf8;
+  --color-ember-light: #60a5fa;
+  --color-ember-deep: #2563eb;
+  --color-accent: #f59e0b;
+  --color-steel: #64748b;
+  --color-steel-light: #94a3b8;
+  --color-ink: #f8fafc;
+  --color-muted: #94a3b8;
+  --color-line: #1e293b;
+  --color-line-glow: rgba(56, 189, 248, 0.25);
+  --color-success: #10b981;
 }
 
-/* next/font injects the family as a CSS variable; `inline` lets the
-   font-display / font-sans utilities resolve straight to it. */
 @theme inline {
-  --font-display: var(--font-fraunces);
+  --font-display: var(--font-inter);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-mono);
 }
@@ -38,15 +38,13 @@
   body {
     background-color: var(--color-night);
     color: var(--color-ink);
-    /* --font-inter is set on <html> by next/font. The theme block above is
-       `inline`, so it deliberately emits no --font-sans variable to read. */
-    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background-color: color-mix(in srgb, var(--color-ember) 32%, transparent);
+    background-color: rgba(37, 99, 235, 0.35);
     color: var(--color-ink);
   }
 
@@ -64,50 +62,46 @@
   }
 }
 
-/* One focus treatment for every interactive element on the page. Written as
-   plain CSS so it can't drift with utility renames. */
+/* Enterprise interactive focus */
 .focus-ring:focus-visible {
-  outline: 2px solid var(--color-ember);
-  outline-offset: 4px;
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 3px;
 }
 
 .focus-ring-steel:focus-visible {
   outline: 2px solid var(--color-steel);
-  outline-offset: 4px;
+  outline-offset: 3px;
 }
 
-/* Fraunces is variable — push optical size up and turn the "wonk" on so the
-   display face reads as a real display face, not a scaled-up text serif. */
-.crest-face {
-  font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 144;
-}
-
+/* Modern Enterprise Geometric Heading */
 .display-face {
-  font-variation-settings: "SOFT" 0, "WONK" 0, "opsz" 96;
+  letter-spacing: -0.03em;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-/* Hairline technical grid — sits under the hero and the name section. */
+/* Subtle enterprise architectural grid */
 .grid-veil {
   background-image:
-    linear-gradient(to right, rgba(91, 124, 153, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(91, 124, 153, 0.07) 1px, transparent 1px);
-  background-size: 5.5rem 5.5rem;
-  mask-image: radial-gradient(ellipse at 50% 40%, black 15%, transparent 72%);
+    linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  mask-image: radial-gradient(ellipse at 50% 30%, black 25%, transparent 75%);
 }
 
-/* Thin ember rule used between sections. */
+/* Clean enterprise separation rule */
 .hairline {
   background: linear-gradient(
     to right,
     transparent,
-    color-mix(in srgb, var(--color-ember) 45%, transparent),
-    color-mix(in srgb, var(--color-steel) 40%, transparent),
+    rgba(56, 189, 248, 0.4),
+    rgba(37, 99, 235, 0.4),
     transparent
   );
 }
 
+/* Modern scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
   background: var(--color-night);
@@ -117,44 +111,34 @@
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-ember-deep);
+  background: #334155;
 }
 
-/* Cybernetic terminal scanline overlay */
-.scanline-overlay {
-  background: linear-gradient(
-    rgba(18, 20, 28, 0) 50%,
-    rgba(0, 0, 0, 0.25) 50%
-  ),
-  linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 0.03),
-    rgba(0, 255, 0, 0.01),
-    rgba(0, 0, 255, 0.03)
-  );
-  background-size: 100% 3px, 6px 100%;
-}
-
-/* Glass card styling */
+/* Enterprise Glass Panel */
 .glass-panel {
   background: linear-gradient(
     135deg,
-    rgba(20, 24, 36, 0.7) 0%,
-    rgba(12, 14, 20, 0.6) 100%
+    rgba(16, 23, 42, 0.8) 0%,
+    rgba(12, 18, 32, 0.65) 100%
   );
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(91, 124, 153, 0.16);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(51, 65, 85, 0.6);
 }
 
 .glass-panel:hover {
-  border-color: rgba(224, 121, 60, 0.35);
+  border-color: rgba(56, 189, 248, 0.4);
 }
 
-/* Subtle glow badge */
-.cyber-badge {
-  background: rgba(224, 121, 60, 0.08);
-  border: 1px solid rgba(224, 121, 60, 0.25);
-  box-shadow: 0 0 15px -3px rgba(224, 121, 60, 0.15);
+/* Executive Metric Card */
+.metric-card {
+  background: linear-gradient(180deg, rgba(16, 23, 42, 0.7) 0%, rgba(10, 15, 26, 0.9) 100%);
+  border: 1px solid rgba(30, 41, 59, 0.8);
 }
 
+/* Enterprise Trust Badge */
+.trust-badge {
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  box-shadow: 0 0 20px -5px rgba(37, 99, 235, 0.2);
+}

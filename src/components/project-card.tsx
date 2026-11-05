@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 
 export type Project = {
   name: string;
@@ -9,149 +9,138 @@ export type Project = {
   href?: string;
   linkLabel?: string;
   tags: string[];
-  version?: string;
-  status?: string;
 };
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
 export function ProjectCard({ project }: { project: Project }) {
-  const reduced = useReducedMotion();
   const { name, tagline, description, href, linkLabel, tags } = project;
 
   return (
     <motion.article
-      className="group relative h-full"
-      whileHover={reduced ? undefined : { y: -6 }}
-      transition={{ duration: 0.3, ease: EASE }}
+      className="group relative h-full rounded-2xl border border-line bg-surface-card/90 p-7 sm:p-8 backdrop-blur-xl transition-all duration-300 hover:border-primary-light/40 hover:shadow-[0_20px_50px_-20px_rgba(37,99,235,0.25)] flex flex-col justify-between"
     >
-      {/* Dynamic glow edge on hover */}
-      <div
-        aria-hidden
-        className="absolute -inset-px rounded-2xl bg-[linear-gradient(135deg,var(--color-ember),var(--color-steel))] opacity-0 blur-[5px] transition-opacity duration-300 group-hover:opacity-65"
-      />
-
-      <div className="relative flex h-full flex-col rounded-2xl border border-line bg-surface/90 p-7 backdrop-blur-md transition-colors duration-300 group-hover:border-ember/40 sm:p-8">
-        {/* Header row */}
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-ember animate-pulse shadow-[0_0_8px_rgba(224,121,60,0.8)]" />
-              <span className="font-mono text-xs uppercase tracking-widest text-ember">
-                Security Suite
-              </span>
-            </div>
-            <h3 className="font-display text-2xl sm:text-3xl font-black tracking-tight text-ink mt-1.5 transition-colors duration-300 group-hover:text-ember">
-              {name}
-            </h3>
+      <div>
+        <div className="flex items-center justify-between gap-3 border-b border-line pb-4">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="font-mono text-xs uppercase tracking-wider text-primary-light font-semibold">
+              Enterprise Suite
+            </span>
           </div>
-
-          <span className="rounded-full border border-line bg-surface-card px-2.5 py-1 font-mono text-[11px] text-steel-light">
-            v0.4.1 Beta
+          <span className="rounded-full bg-slate-800 border border-slate-700 px-2.5 py-0.5 font-mono text-xs text-muted">
+            v0.4.1 Production-Ready
           </span>
         </div>
 
-        <p className="mt-2 text-xs uppercase tracking-[0.18em] text-steel font-mono">
-          {tagline}
-        </p>
+        <div className="mt-5">
+          <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-ink group-hover:text-primary-light transition-colors">
+            {name} Enterprise
+          </h3>
+          <p className="mt-1 text-sm font-medium text-muted">
+            {tagline}
+          </p>
+        </div>
 
-        <p className="mt-4 flex-1 text-[0.95rem] leading-relaxed text-muted">
+        <p className="mt-4 text-sm text-muted leading-relaxed">
           {description}
         </p>
 
-        {/* Attack Vector Modules Grid */}
-        <div className="mt-6 rounded-xl border border-line/60 bg-night/50 p-3.5">
-          <span className="font-mono text-[10px] uppercase tracking-wider text-muted/70 block mb-2">
-            Module Matrix Status
-          </span>
-          <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-            <div className="flex items-center justify-between rounded-lg bg-surface px-2.5 py-1.5 border border-line/50">
-              <span className="text-ink/80">SQL Injection</span>
-              <span className="text-emerald-400 font-bold text-[10px]">SHIPPED</span>
-            </div>
-            <div className="flex items-center justify-between rounded-lg bg-surface px-2.5 py-1.5 border border-line/50">
-              <span className="text-muted">XSS Engine</span>
-              <span className="text-amber-400 text-[10px]">BETA</span>
-            </div>
-            <div className="flex items-center justify-between rounded-lg bg-surface px-2.5 py-1.5 border border-line/50">
-              <span className="text-muted">CSRF Mapping</span>
-              <span className="text-steel-light text-[10px]">DEV</span>
-            </div>
-            <div className="flex items-center justify-between rounded-lg bg-surface px-2.5 py-1.5 border border-line/50">
-              <span className="text-muted">SSRF & RCE</span>
-              <span className="text-steel text-[10px]">RESEARCH</span>
-            </div>
+        {/* Enterprise Capabilities Checklist */}
+        <div className="mt-6 space-y-2.5 rounded-xl border border-line bg-surface/60 p-4 text-xs font-mono">
+          <div className="flex items-center gap-2 text-ink">
+            <span className="text-emerald-400 font-bold">✓</span>
+            <span>Deterministic SQLMap heuristic sub-engine integration</span>
+          </div>
+          <div className="flex items-center gap-2 text-ink">
+            <span className="text-emerald-400 font-bold">✓</span>
+            <span>Zero-noise deduplication across REST & GraphQL parameters</span>
+          </div>
+          <div className="flex items-center gap-2 text-ink">
+            <span className="text-emerald-400 font-bold">✓</span>
+            <span>Electron & Python native architecture with CLI/API support</span>
+          </div>
+          <div className="flex items-center gap-2 text-ink">
+            <span className="text-emerald-400 font-bold">✓</span>
+            <span>Exportable cryptographically verified PoC audit reports</span>
           </div>
         </div>
 
-        {/* Tech tags */}
-        <ul className="mt-5 flex flex-wrap gap-1.5">
-          {tags.map((t) => (
-            <li
-              key={t}
-              className="rounded-full border border-line/80 bg-surface-card px-2.5 py-0.5 font-mono text-[11px] text-muted transition-colors group-hover:border-steel/40 group-hover:text-ink"
+        {/* Technical Specification Badges */}
+        <div className="mt-6 flex flex-wrap gap-1.5">
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-md border border-line bg-surface px-2.5 py-1 font-mono text-[11px] text-muted"
             >
-              {t}
-            </li>
-          ))}
-        </ul>
-
-        {/* Link Button */}
-        {href && (
-          <div className="mt-6 pt-4 border-t border-line/60 flex items-center justify-between">
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="focus-ring group/btn inline-flex items-center gap-2 rounded-lg text-sm font-semibold text-ink transition-colors duration-200 hover:text-ember"
-            >
-              <span>{linkLabel ?? `Explore ${name}`}</span>
-              <span
-                aria-hidden
-                className="transition-transform duration-200 group-hover/btn:translate-x-1"
-              >
-                →
-              </span>
-            </a>
-
-            <span className="font-mono text-[11px] text-steel">
-              Open-Source
+              {tag}
             </span>
-          </div>
+          ))}
+          <span className="rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1 font-mono text-[11px] text-primary-light font-medium">
+            Air-Gapped Compatible
+          </span>
+        </div>
+      </div>
+
+      <div className="mt-8 pt-5 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4">
+        {href && (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="focus-ring inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs font-semibold text-white shadow-sm transition-all hover:bg-primary-deep"
+          >
+            <span>{linkLabel ?? `Deploy ${name}`}</span>
+            <span>→</span>
+          </a>
         )}
+
+        <span className="font-mono text-xs text-muted">
+          Enterprise Licensing & Open Core
+        </span>
       </div>
     </motion.article>
   );
 }
 
-/** Placeholder for ongoing development */
 export function MoreInDevelopment() {
   return (
-    <div className="relative flex h-full min-h-[18rem] flex-col items-center justify-center rounded-2xl border border-dashed border-line bg-surface/30 p-8 text-center transition-colors duration-300 hover:border-steel/50">
-      <div className="relative mb-5 flex h-10 w-10 items-center justify-center">
-        <span
-          aria-hidden
-          className="absolute inset-0 animate-ping rounded-full bg-steel/30"
-        />
-        <span
-          aria-hidden
-          className="h-3 w-3 rounded-full bg-steel shadow-[0_0_12px_rgba(91,124,153,0.8)]"
-        />
+    <div className="h-full rounded-2xl border border-dashed border-line bg-surface-card/40 p-7 sm:p-8 flex flex-col justify-between">
+      <div>
+        <div className="flex items-center justify-between border-b border-line pb-4">
+          <span className="font-mono text-xs uppercase tracking-wider text-muted">
+            Taikoris Applied Research Labs
+          </span>
+          <span className="rounded-full bg-slate-800 px-2.5 py-0.5 font-mono text-[11px] text-muted">
+            Roadmap 2026-2027
+          </span>
+        </div>
+
+        <h3 className="font-display text-2xl font-bold tracking-tight text-ink mt-5">
+          Autonomous Threat Mitigation Mesh
+        </h3>
+        <p className="mt-1 text-sm text-primary-light font-medium">
+          Neuro-Symbolic Red Team Agents
+        </p>
+
+        <p className="mt-4 text-sm text-muted leading-relaxed">
+          Developing distributed autonomous cognitive agents capable of continuously stress-testing enterprise microservices, verifying formal application invariants, and synthesizing automated patch recommendations.
+        </p>
+
+        <div className="mt-6 grid grid-cols-2 gap-2 text-xs font-mono">
+          <div className="rounded-lg border border-line bg-surface p-3">
+            <span className="text-muted block text-[10px]">COGNITIVE ENGINE</span>
+            <span className="text-ink font-semibold mt-0.5 block">Neuro-Symbolic</span>
+          </div>
+          <div className="rounded-lg border border-line bg-surface p-3">
+            <span className="text-muted block text-[10px]">VERIFICATION</span>
+            <span className="text-ink font-semibold mt-0.5 block">Formal Proofs</span>
+          </div>
+        </div>
       </div>
 
-      <h4 className="font-display text-xl font-bold text-ink/90">
-        Autonomous Neural Agents
-      </h4>
-      <p className="mt-2 max-w-[28ch] text-xs font-mono uppercase tracking-wider text-steel">
-        Classified Research Lab
-      </p>
-      <p className="mt-3 max-w-[26ch] text-sm text-muted leading-relaxed">
-        Next-generation cognitive systems designed to oversee distributed software architectures.
-      </p>
-
-      <span className="mt-6 inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1 text-[11px] font-mono text-muted">
-        <span>In Active R&D</span>
-      </span>
+      <div className="mt-8 pt-5 border-t border-line flex items-center justify-between text-xs font-mono text-muted">
+        <span>In Active Development</span>
+        <span className="text-primary-light">Private Alpha</span>
+      </div>
     </div>
   );
 }

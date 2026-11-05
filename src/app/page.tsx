@@ -1,20 +1,19 @@
 import { Ambient } from "@/components/ambient";
+import { EnterpriseDashboard } from "@/components/enterprise-dashboard";
 import { LetterCrest } from "@/components/letter-crest";
 import { MoreInDevelopment, ProjectCard } from "@/components/project-card";
 import { Reveal, RevealGroup, RevealItem } from "@/components/reveal";
 import { SiteNav } from "@/components/site-nav";
-import { TerminalSimulator } from "@/components/terminal-simulator";
 import { PARTS } from "@/lib/crest";
 import { GITHUB_URL, PROJECTS } from "@/lib/projects";
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
+function SectionEyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center justify-center gap-3">
-      <span aria-hidden className="hairline h-px w-8 sm:w-16" />
-      <span className="font-mono text-[0.7rem] uppercase tracking-[0.35em] text-steel-light sm:text-xs">
+    <div className="flex items-center justify-center gap-2.5 mb-3">
+      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+      <span className="font-mono text-xs uppercase tracking-widest text-primary-light font-semibold">
         {children}
       </span>
-      <span aria-hidden className="hairline h-px w-8 sm:w-16" />
     </div>
   );
 }
@@ -26,88 +25,76 @@ export default function Home() {
     <>
       <SiteNav />
 
-      <main id="top" className="relative overflow-hidden">
+      <main id="top" className="relative overflow-hidden bg-night">
         {/* ── 01. Hero Section ─────────────────────────────────────────── */}
-        <section className="relative flex min-h-svh items-center overflow-hidden pt-20 pb-16">
+        <section className="relative min-h-[92svh] flex items-center justify-center pt-28 pb-20 px-6 sm:px-8">
           <Ambient />
-          <div aria-hidden className="grid-veil absolute inset-0" />
 
-          <div className="relative mx-auto w-full max-w-5xl px-6 py-24 text-center">
+          <div className="relative mx-auto w-full max-w-5xl text-center z-10">
             <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full border border-ember/30 bg-ember/10 px-4 py-1.5 text-xs font-mono text-ember-light mb-4 shadow-[0_0_20px_rgba(224,121,60,0.15)]">
-                <span className="h-1.5 w-1.5 rounded-full bg-ember animate-ping" />
-                <span>SOVEREIGN DEFENSE & INTELLIGENCE ARCHITECTURE</span>
+              <div className="inline-flex items-center gap-2.5 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-mono text-primary-light mb-6 shadow-lg shadow-primary/10">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>ENTERPRISE ATTACK SURFACE DEFENSE & SOVEREIGN INTELLIGENCE</span>
               </div>
             </Reveal>
 
             <Reveal delay={0.1}>
-              <h1 className="display-face mt-6 font-display text-[12vw] font-black leading-[0.92] tracking-[-0.035em] text-ink sm:text-[10vw] lg:text-[7.5rem]">
-                The Great Power,
-                <span className="block bg-[linear-gradient(135deg,var(--color-ember),var(--color-ember-light),var(--color-steel-light))] bg-clip-text text-transparent">
-                  Enthroned.
+              <h1 className="display-face font-display text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-ink leading-[1.08] sm:leading-[1.05]">
+                Continuous Attack Surface Defense
+                <span className="block mt-2 bg-gradient-to-r from-primary-light via-blue-400 to-indigo-400 bg-clip-text text-transparent">
+                  For Modern Enterprise.
                 </span>
               </h1>
             </Reveal>
 
-            <Reveal delay={0.22}>
-              <p className="mx-auto mt-8 max-w-2xl text-balance text-lg leading-relaxed text-muted sm:text-xl">
-                A technology company built on eight non-negotiable ideas. From autonomous cognitive models to relentless offensive security — we engineer systems that answer for themselves.
+            <Reveal delay={0.2}>
+              <p className="mx-auto mt-7 max-w-2xl text-balance text-base sm:text-xl text-muted leading-relaxed">
+                Taikoris delivers deterministic vulnerability verification and autonomous cognitive auditing. Eliminating false alarms, mapping entire digital topologies, and proving exploit invariants before adversaries can act.
               </p>
             </Reveal>
 
-            <Reveal delay={0.32}>
-              <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Reveal delay={0.3}>
+              <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
-                  href="#shikra"
-                  className="focus-ring group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-ember px-8 py-4 text-sm font-semibold text-night transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_-8px_rgba(224,121,60,0.65)] sm:w-auto"
+                  href="#contact"
+                  className="focus-ring inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-deep hover:shadow-primary/40 hover:-translate-y-0.5"
                 >
-                  <span
-                    aria-hidden
-                    className="absolute inset-0 -translate-x-full bg-[linear-gradient(to_right,transparent,rgba(255,255,255,0.35),transparent)] transition-transform duration-700 group-hover:translate-x-full"
-                  />
-                  <span className="relative">Explore Shikra Suite</span>
-                  <span
-                    aria-hidden
-                    className="relative transition-transform duration-300 group-hover:translate-x-1"
-                  >
-                    →
-                  </span>
+                  <span>Request Technical Briefing</span>
+                  <span>→</span>
                 </a>
 
                 <a
-                  href="#name"
-                  className="focus-ring-steel group inline-flex w-full items-center justify-center gap-2 rounded-full border border-line bg-surface/70 px-8 py-4 text-sm font-semibold text-ink backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-steel/60 hover:bg-surface sm:w-auto"
+                  href="#platform"
+                  className="focus-ring inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-line bg-surface-card px-8 py-3.5 text-sm font-semibold text-ink transition-all hover:border-slate-600 hover:bg-surface-hover hover:-translate-y-0.5"
                 >
-                  <span>Decipher The Name</span>
-                  <span
-                    aria-hidden
-                    className="text-steel transition-transform duration-300 group-hover:translate-y-0.5"
-                  >
-                    ↓
-                  </span>
+                  <span>Explore Live Console</span>
+                  <span className="text-muted">↓</span>
                 </a>
               </div>
             </Reveal>
 
-            {/* Kinetic Telemetry Strip */}
-            <Reveal delay={0.44}>
-              <div className="mx-auto mt-16 max-w-3xl rounded-2xl border border-line/70 bg-surface/40 p-4 backdrop-blur-lg">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-                  <div className="p-2">
-                    <span className="block font-display text-2xl font-black text-ink">08</span>
-                    <span className="font-mono text-[11px] text-muted uppercase tracking-wider">Core Pillars</span>
+            {/* Institutional Compliance Ribbon */}
+            <Reveal delay={0.4}>
+              <div className="mx-auto mt-16 max-w-4xl border-t border-line/80 pt-8">
+                <p className="font-mono text-[11px] text-muted uppercase tracking-widest mb-4">
+                  Built to Align with Strict Enterprise Security Standards
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs font-mono text-slate-400">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-emerald-400">✓</span>
+                    <span>SOC2 Type II Aligned</span>
                   </div>
-                  <div className="p-2">
-                    <span className="block font-display text-2xl font-black text-ember">0%</span>
-                    <span className="font-mono text-[11px] text-muted uppercase tracking-wider">Speculation</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-emerald-400">✓</span>
+                    <span>Zero False Positives</span>
                   </div>
-                  <div className="p-2">
-                    <span className="block font-display text-2xl font-black text-emerald-400">SQLMap</span>
-                    <span className="font-mono text-[11px] text-muted uppercase tracking-wider">Engine Core</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-emerald-400">✓</span>
+                    <span>Deterministic Heuristics</span>
                   </div>
-                  <div className="p-2">
-                    <span className="block font-display text-2xl font-black text-steel-light">100%</span>
-                    <span className="font-mono text-[11px] text-muted uppercase tracking-wider">Verifiable</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-emerald-400">✓</span>
+                    <span>Air-Gapped Deployment</span>
                   </div>
                 </div>
               </div>
@@ -115,264 +102,348 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── 02. The Sovereign Name Section ───────────────────────────── */}
-        <section id="name" className="relative overflow-hidden py-28 sm:py-36 border-t border-line/60">
-          <div aria-hidden className="grid-veil absolute inset-0 opacity-40" />
-          <div
-            aria-hidden
-            className="absolute left-1/2 top-1/3 h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-ember/[0.06] blur-[140px]"
-          />
-
-          <div className="relative mx-auto w-full max-w-6xl px-6">
-            <Reveal>
-              <Eyebrow>The Sovereign Claim</Eyebrow>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <h2 className="display-face mx-auto mt-6 max-w-2xl text-balance text-center font-display text-4xl font-black leading-[1.08] tracking-tight text-ink sm:text-5xl">
-                Three Parts. One Authority.
+        {/* ── 02. Interactive Platform Console Preview ─────────────────── */}
+        <section id="platform" className="relative py-24 sm:py-32 border-t border-line/70 bg-surface/30">
+          <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <SectionEyebrow>Enterprise Platform</SectionEyebrow>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-ink">
+                Real-Time Attack Surface Observability
               </h2>
-            </Reveal>
-
-            <Reveal delay={0.18}>
-              <p className="mx-auto mt-4 max-w-xl text-center text-sm sm:text-base text-muted">
-                Every syllable of TAIKORIS has been engineered from historical roots to articulate our philosophy of scale, driving power, and sovereign posture.
+              <p className="mt-4 text-base text-muted">
+                Inspect how the Taikoris Console continuously analyzes enterprise assets, deduplicates injection surfaces, and generates verified vulnerability proof-of-concepts.
               </p>
-            </Reveal>
+            </div>
 
-            {/* Three parts cards */}
-            <RevealGroup className="mt-14 grid gap-6 md:grid-cols-3" as="ul">
+            <EnterpriseDashboard />
+          </div>
+        </section>
+
+        {/* ── 03. Core Enterprise Solutions ────────────────────────────── */}
+        <section id="solutions" className="relative py-24 sm:py-32 border-t border-line/70">
+          <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <SectionEyebrow>Enterprise Capabilities</SectionEyebrow>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-ink">
+                Engineered for High-Consequence Environments
+              </h2>
+              <p className="mt-4 text-base text-muted">
+                Three unified architectural pillars protecting mission-critical digital infrastructure from modern systemic threats.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-3">
+              <div className="rounded-2xl border border-line bg-surface-card/80 p-8 hover:border-primary-light/40 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 border border-primary/25 text-primary-light font-display text-lg font-bold">
+                    01
+                  </div>
+                  <h3 className="font-display text-2xl font-bold text-ink mt-6">
+                    Continuous Attack Surface Management
+                  </h3>
+                  <p className="mt-3 text-sm text-muted leading-relaxed">
+                    Automated, non-invasive discovery of shadow APIs, orphaned subdomains, and exposed cloud interfaces with continuous parameter deduplication.
+                  </p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-line/60 flex items-center justify-between text-xs font-mono text-primary-light">
+                  <span>100% Asset Observability</span>
+                  <span>→</span>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-line bg-surface-card/80 p-8 hover:border-primary-light/40 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 font-display text-lg font-bold">
+                    02
+                  </div>
+                  <h3 className="font-display text-2xl font-bold text-ink mt-6">
+                    Autonomous Vulnerability Verification
+                  </h3>
+                  <p className="mt-3 text-sm text-muted leading-relaxed">
+                    Powered by the Shikra engine. Replaces noisy regex scanners with verified heuristic execution, proving whether injection surfaces are actually exploitable.
+                  </p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-line/60 flex items-center justify-between text-xs font-mono text-emerald-400">
+                  <span>Zero False Positives</span>
+                  <span>→</span>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-line bg-surface-card/80 p-8 hover:border-primary-light/40 transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500/10 border border-indigo-500/25 text-indigo-400 font-display text-lg font-bold">
+                    03
+                  </div>
+                  <h3 className="font-display text-2xl font-bold text-ink mt-6">
+                    Neuro-Symbolic Sovereign AI
+                  </h3>
+                  <p className="mt-3 text-sm text-muted leading-relaxed">
+                    Deterministic cognitive models that operate within strict mathematical bounds, offering explainable reasoning for security operations without generative hallucination.
+                  </p>
+                </div>
+                <div className="mt-8 pt-4 border-t border-line/60 flex items-center justify-between text-xs font-mono text-indigo-400">
+                  <span>Formal Proof Verification</span>
+                  <span>→</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 04. Shikra Enterprise Spotlight ─────────────────────────── */}
+        <section id="shikra" className="relative py-24 sm:py-32 border-t border-line/70 bg-surface/20">
+          <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <SectionEyebrow>Flagship Technology</SectionEyebrow>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-ink">
+                Shikra Vulnerability Intelligence Engine
+              </h2>
+              <p className="mt-4 text-base text-muted">
+                The desktop & cloud scanner engineered with Electron and Python, powered by a high-throughput SQLMap sub-engine for rigorous penetration auditing.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              <ProjectCard project={PROJECTS[0]} />
+              <MoreInDevelopment />
+            </div>
+          </div>
+        </section>
+
+        {/* ── 05. Enterprise Comparison Matrix ─────────────────────────── */}
+        <section className="relative py-24 sm:py-32 border-t border-line/70">
+          <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <SectionEyebrow>Comparative Advantage</SectionEyebrow>
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-ink">
+                Traditional Scanners vs. Taikoris
+              </h2>
+              <p className="mt-4 text-sm sm:text-base text-muted">
+                Why enterprise security teams are migrating from legacy DAST tools to deterministic verification.
+              </p>
+            </div>
+
+            <div className="overflow-x-auto rounded-2xl border border-line bg-surface-card/90 shadow-xl">
+              <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                <thead>
+                  <tr className="border-b border-line bg-surface-card text-muted font-mono uppercase tracking-wider text-[11px]">
+                    <th className="py-4 px-6">Capability & Metric</th>
+                    <th className="py-4 px-6">Legacy DAST & Scanners</th>
+                    <th className="py-4 px-6 text-primary-light font-bold">Taikoris Enterprise</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-line/70">
+                  <tr>
+                    <td className="py-4 px-6 font-medium text-ink">False Positive Rate</td>
+                    <td className="py-4 px-6 text-rose-400">High (35% – 60% false alarms)</td>
+                    <td className="py-4 px-6 text-emerald-400 font-semibold font-mono">0% (Verified PoC Guaranteed)</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-medium text-ink">SQL Injection Verification</td>
+                    <td className="py-4 px-6 text-muted">Generic regex & status code guessing</td>
+                    <td className="py-4 px-6 text-primary-light font-mono">SQLMap Heuristic Blind Sub-Engine</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-medium text-ink">Surface Deduplication</td>
+                    <td className="py-4 px-6 text-muted">Repeats scan on every raw URL</td>
+                    <td className="py-4 px-6 text-emerald-400 font-mono">Normalized Parameter Topology</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-medium text-ink">Deployment Architecture</td>
+                    <td className="py-4 px-6 text-muted">Cloud SaaS only (Data leaves perimeter)</td>
+                    <td className="py-4 px-6 text-ink font-mono">Air-Gapped, On-Prem, or Hybrid</td>
+                  </tr>
+                  <tr>
+                    <td className="py-4 px-6 font-medium text-ink">Audit Verification Proof</td>
+                    <td className="py-4 px-6 text-muted">Static PDF without replay proof</td>
+                    <td className="py-4 px-6 text-emerald-400 font-mono">Cryptographically Signed Token</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 06. The 8 Governance Pillars (Framework) ─────────────────── */}
+        <section id="governance" className="relative py-24 sm:py-32 border-t border-line/70 bg-surface/30">
+          <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <SectionEyebrow>Institutional Standard</SectionEyebrow>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-ink">
+                The Taikoris Governance Framework
+              </h2>
+              <p className="mt-4 text-base text-muted">
+                Eight operational standards defining how every system, model, and platform in the enterprise portfolio is architected and audited.
+              </p>
+            </div>
+
+            <LetterCrest />
+          </div>
+        </section>
+
+        {/* ── 07. Corporate Architecture & Etymology ───────────────────── */}
+        <section id="architecture" className="relative py-24 sm:py-32 border-t border-line/70">
+          <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <SectionEyebrow>Corporate Identity</SectionEyebrow>
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-ink">
+                The Sovereign Standard
+              </h2>
+              <p className="mt-4 text-base text-muted">
+                Three foundational pillars synthesized into one unified corporate mandate.
+              </p>
+            </div>
+
+            <RevealGroup className="grid gap-6 md:grid-cols-3" as="div">
               {PARTS.map((p) => (
-                <RevealItem key={p.part} as="li">
-                  <div className="group h-full rounded-2xl border border-line bg-surface/80 p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-ember/40 hover:bg-surface hover:shadow-[0_20px_50px_-20px_rgba(224,121,60,0.4)] backdrop-blur-md">
-                    <div className="flex items-center justify-between border-b border-line/60 pb-4">
-                      <span className="font-mono text-xs font-semibold text-ember uppercase tracking-widest">
-                        {p.symbol}
-                      </span>
-                      <span className="font-mono text-[11px] text-steel uppercase tracking-wider">
-                        {p.gloss}
-                      </span>
+                <RevealItem key={p.part}>
+                  <div className="rounded-2xl border border-line bg-surface-card p-8 h-full flex flex-col justify-between hover:border-slate-600 transition-colors">
+                    <div>
+                      <div className="flex items-center justify-between border-b border-line pb-4">
+                        <span className="font-mono text-xs font-bold text-primary-light">
+                          {p.symbol}
+                        </span>
+                        <span className="font-mono text-xs text-muted">
+                          {p.gloss}
+                        </span>
+                      </div>
+                      <h3 className="font-display text-4xl font-black text-ink mt-6">
+                        {p.part}
+                      </h3>
+                      <p className="mt-4 text-sm text-muted leading-relaxed">
+                        {p.note}
+                      </p>
                     </div>
-
-                    <p className="font-display text-4xl font-black tracking-tight text-ink mt-5 transition-colors duration-300 group-hover:text-ember">
-                      {p.part}
-                    </p>
-
-                    <p className="mt-4 text-[0.95rem] leading-relaxed text-muted">
-                      {p.note}
-                    </p>
                   </div>
                 </RevealItem>
               ))}
             </RevealGroup>
 
-            {/* Read Together Banner */}
-            <Reveal delay={0.24}>
-              <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-line/80 bg-night/80 p-8 text-center shadow-xl backdrop-blur-xl">
-                <p className="font-display text-2xl font-bold leading-snug text-ink sm:text-3xl">
-                  Synthesized Mandate:{" "}
-                  <span className="bg-[linear-gradient(135deg,var(--color-ember),var(--color-ember-light))] bg-clip-text text-transparent">
-                    The Great Power, Enthroned.
-                  </span>
-                </p>
-                <p className="mx-auto mt-4 max-w-xl text-balance text-sm leading-relaxed text-muted">
-                  This is our constructed architecture, not an inherited dictionary entry. We assembled the name, we engineered the vision, and we hold every system to what it claims.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* ── 03. The 8 Pillars Section (Letter Crest) ─────────────────── */}
-        <section id="crest" className="relative overflow-hidden py-28 sm:py-36 border-t border-line/60 bg-surface/20">
-          <div aria-hidden className="grid-veil absolute inset-0 opacity-50" />
-          <div
-            aria-hidden
-            className="absolute right-1/4 top-1/4 h-[30rem] w-[30rem] rounded-full bg-steel/[0.08] blur-[150px]"
-          />
-
-          <div className="relative mx-auto w-full max-w-6xl px-6">
-            <Reveal>
-              <Eyebrow>Cognitive Foundation</Eyebrow>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <h2 className="display-face mx-auto mt-6 max-w-2xl text-balance text-center font-display text-4xl font-black leading-[1.08] tracking-tight text-ink sm:text-5xl">
-                Eight Letters. Eight Mandates.
-              </h2>
-            </Reveal>
-
-            <Reveal delay={0.16}>
-              <p className="mx-auto mt-4 max-w-xl text-center text-sm sm:text-base text-muted">
-                Each letter in TAIKORIS defines an operational axiom. Interact with any letter to inspect its architectural purpose and domain telemetry.
+            <div className="mt-12 rounded-2xl border border-line/80 bg-surface-card/60 p-8 text-center max-w-3xl mx-auto backdrop-blur-md">
+              <p className="font-display text-2xl font-bold text-ink">
+                Mandate:{" "}
+                <span className="text-primary-light">
+                  The Great Power, Enthroned.
+                </span>
               </p>
-            </Reveal>
-
-            <Reveal delay={0.22}>
-              <div className="mt-14 sm:mt-18">
-                <LetterCrest />
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* ── 04. Security Suite Showcase (Shikra) ────────────────────── */}
-        <section id="shikra" className="relative overflow-hidden py-28 sm:py-36 border-t border-line/60">
-          <div
-            aria-hidden
-            className="absolute left-1/3 bottom-1/4 h-[34rem] w-[34rem] rounded-full bg-ember/[0.08] blur-[150px]"
-          />
-
-          <div className="relative mx-auto w-full max-w-6xl px-6">
-            <Reveal>
-              <Eyebrow>Offensive Cyber Security</Eyebrow>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <h2 className="display-face mx-auto mt-6 max-w-3xl text-balance text-center font-display text-4xl font-black leading-[1.08] tracking-tight text-ink sm:text-5xl">
-                Shikra Vulnerability Intelligence Engine
-              </h2>
-            </Reveal>
-
-            <Reveal delay={0.18}>
-              <p className="mx-auto mt-4 max-w-2xl text-center text-sm sm:text-base text-muted">
-                Experience the terminal simulation of Shikra in action. Combining deep heuristic SQLMap execution with desktop ergonomics to eliminate web vulnerabilities before adversaries find them.
+              <p className="mt-3 text-sm text-muted max-w-xl mx-auto">
+                We hold our engineering, tools, and autonomous systems to the highest bar of institutional accountability and deterministic security.
               </p>
-            </Reveal>
-
-            {/* Interactive Terminal Simulator */}
-            <div className="mt-14">
-              <Reveal delay={0.24}>
-                <TerminalSimulator />
-              </Reveal>
-            </div>
-
-            {/* Project Details Cards Grid */}
-            <div className="mt-12">
-              <RevealGroup className="grid gap-6 sm:grid-cols-2" as="ul">
-                {PROJECTS.map((project) => (
-                  <RevealItem key={project.name} as="li" className="h-full">
-                    <ProjectCard project={project} />
-                  </RevealItem>
-                ))}
-                <RevealItem as="li" className="h-full">
-                  <MoreInDevelopment />
-                </RevealItem>
-              </RevealGroup>
             </div>
           </div>
         </section>
 
-        {/* ── 05. Technological Ecosystem & Wings ──────────────────────── */}
-        <section id="ecosystem" className="relative overflow-hidden py-28 sm:py-36 border-t border-line/60 bg-surface/20">
-          <div className="relative mx-auto w-full max-w-6xl px-6">
-            <Reveal>
-              <Eyebrow>Strategic Wings</Eyebrow>
-            </Reveal>
+        {/* ── 08. Enterprise Contact / Conversion Banner ───────────────── */}
+        <section id="contact" className="relative py-24 sm:py-32 border-t border-line/70 bg-gradient-to-b from-surface/50 to-night">
+          <div className="mx-auto w-full max-w-5xl px-6 lg:px-8 text-center">
+            <div className="rounded-3xl border border-primary/30 bg-surface-card/90 p-8 sm:p-14 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+              <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-64 w-96 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
 
-            <Reveal delay={0.1}>
-              <h2 className="display-face mx-auto mt-6 max-w-2xl text-balance text-center font-display text-4xl font-black leading-[1.08] tracking-tight text-ink sm:text-5xl">
-                The Taikoris Ecosystem
+              <span className="font-mono text-xs uppercase tracking-widest text-primary-light font-semibold block mb-3">
+                Enterprise Engagement
+              </span>
+              <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-ink">
+                Secure Your Attack Surface Today
               </h2>
-            </Reveal>
+              <p className="mx-auto mt-4 max-w-xl text-sm sm:text-base text-muted leading-relaxed">
+                Schedule a confidential architecture briefing with our senior security engineers or deploy the Shikra vulnerability engine across your perimeter.
+              </p>
 
-            <div className="mt-14 grid gap-6 md:grid-cols-3">
-              <div className="glass-panel rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ember/10 border border-ember/30 text-ember font-mono text-sm font-bold">
-                  01
-                </div>
-                <h3 className="font-display text-2xl font-bold text-ink mt-5">
-                  Neuro-Symbolic AI
-                </h3>
-                <p className="mt-3 text-sm text-muted leading-relaxed">
-                  Moving beyond stochastic generators to deterministic reasoning agents capable of verifying formal proofs and critical application logic.
-                </p>
-                <div className="mt-6 flex items-center gap-2 text-xs font-mono text-steel">
-                  <span>● Status: Active Research</span>
-                </div>
-              </div>
-
-              <div className="glass-panel rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-steel/10 border border-steel/30 text-steel-light font-mono text-sm font-bold">
-                  02
-                </div>
-                <h3 className="font-display text-2xl font-bold text-ink mt-5">
-                  Offensive Security Lab
-                </h3>
-                <p className="mt-3 text-sm text-muted leading-relaxed">
-                  Empowering authorized security auditors with automated deduplication, blind injection telemetry, and zero false-positive exploit synthesis.
-                </p>
-                <div className="mt-6 flex items-center gap-2 text-xs font-mono text-emerald-400">
-                  <span>● Status: Shipped (Shikra)</span>
-                </div>
-              </div>
-
-              <div className="glass-panel rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ember-deep/20 border border-ember-deep/40 text-ember-light font-mono text-sm font-bold">
-                  03
-                </div>
-                <h3 className="font-display text-2xl font-bold text-ink mt-5">
-                  Sovereign Primitives
-                </h3>
-                <p className="mt-3 text-sm text-muted leading-relaxed">
-                  Hardened infrastructure primitives engineered to resist adversarial interference, data extraction, and hostile runtime manipulation.
-                </p>
-                <div className="mt-6 flex items-center gap-2 text-xs font-mono text-steel">
-                  <span>● Status: Architectural Spec</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── 06. Footer ──────────────────────────────────────────────── */}
-        <footer className="relative overflow-hidden border-t border-line/70 bg-night py-16">
-          <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 px-6 sm:flex-row sm:justify-between">
-            <div className="flex flex-col items-center gap-2.5 sm:items-start text-center sm:text-left">
-              <span className="font-display text-xl font-black uppercase tracking-[0.35em] text-ink">
-                Taikoris
-              </span>
-              <span className="text-sm text-muted">
-                The Great Power, Enthroned.
-              </span>
-              <div className="mt-2 flex items-center gap-2 text-xs font-mono text-emerald-400/90">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Node: nominal · Cryptographic verification active</span>
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center gap-4 sm:items-end">
-              <div className="flex items-center gap-6">
+              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
-                  href="#top"
-                  className="focus-ring text-xs font-mono text-muted transition-colors duration-200 hover:text-ink"
+                  href="mailto:contact@taikoris.com"
+                  className="focus-ring inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-primary px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-primary/25 hover:bg-primary-deep transition-all"
                 >
-                  Top ↑
+                  <span>Inquire at contact@taikoris.com</span>
+                  <span>→</span>
                 </a>
-                <a
-                  href="#crest"
-                  className="focus-ring text-xs font-mono text-muted transition-colors duration-200 hover:text-ink"
-                >
-                  8 Pillars
-                </a>
-                <a
-                  href="#shikra"
-                  className="focus-ring text-xs font-mono text-muted transition-colors duration-200 hover:text-ink"
-                >
-                  Shikra
-                </a>
+
                 <a
                   href={GITHUB_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="focus-ring text-xs font-mono text-muted transition-colors duration-200 hover:text-ember"
+                  className="focus-ring inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-line bg-surface px-8 py-3.5 text-sm font-semibold text-ink hover:border-slate-600 transition-all"
                 >
-                  GitHub ↗
+                  <span>Explore GitHub Organization</span>
+                  <span className="text-muted">↗</span>
                 </a>
               </div>
-              <span className="text-xs font-mono text-muted/60">
-                © {year} TAIKORIS. All rights reserved.
-              </span>
+
+              <div className="mt-10 pt-6 border-t border-line/60 flex flex-wrap items-center justify-center gap-6 text-xs font-mono text-slate-400">
+                <span>● Dedicated SLA Support</span>
+                <span>● Custom Air-Gapped Deployments</span>
+                <span>● Executive PoC Verification</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 09. Multi-Column Corporate Footer ────────────────────────── */}
+        <footer className="relative border-t border-line/80 bg-night py-16 px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+              <div className="col-span-2">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white font-display text-sm font-black">
+                    T
+                  </div>
+                  <span className="font-display text-lg font-bold text-ink">
+                    TAIKORIS
+                  </span>
+                </div>
+                <p className="mt-3 text-xs sm:text-sm text-muted max-w-xs leading-relaxed">
+                  Enterprise-grade attack surface defense, sovereign vulnerability auditing, and deterministic cognitive systems.
+                </p>
+                <div className="mt-4 flex items-center gap-2 font-mono text-xs text-emerald-400">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Global Operations Nominal</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-semibold mb-3">
+                  Solutions
+                </h4>
+                <ul className="space-y-2 text-xs sm:text-sm text-muted">
+                  <li><a href="#solutions" className="hover:text-ink transition-colors">Attack Surface Management</a></li>
+                  <li><a href="#shikra" className="hover:text-ink transition-colors">Vulnerability Auditing</a></li>
+                  <li><a href="#solutions" className="hover:text-ink transition-colors">Neuro-Symbolic AI</a></li>
+                  <li><a href="#solutions" className="hover:text-ink transition-colors">Air-Gapped Deployment</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-semibold mb-3">
+                  Platform
+                </h4>
+                <ul className="space-y-2 text-xs sm:text-sm text-muted">
+                  <li><a href="#platform" className="hover:text-ink transition-colors">Taikoris Console</a></li>
+                  <li><a href="#shikra" className="hover:text-ink transition-colors">Shikra Engine</a></li>
+                  <li><a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors">GitHub Source</a></li>
+                  <li><a href="#governance" className="hover:text-ink transition-colors">8 Pillars Framework</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-mono text-xs uppercase tracking-wider text-ink font-semibold mb-3">
+                  Trust & Company
+                </h4>
+                <ul className="space-y-2 text-xs sm:text-sm text-muted">
+                  <li><a href="#architecture" className="hover:text-ink transition-colors">About Taikoris</a></li>
+                  <li><a href="#contact" className="hover:text-ink transition-colors">Security Disclosures</a></li>
+                  <li><a href="#contact" className="hover:text-ink transition-colors">Enterprise Inquiries</a></li>
+                  <li><a href="https://taikoris.com" className="hover:text-ink transition-colors">taikoris.com</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="pt-8 border-t border-line/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted font-mono">
+              <p>© {year} TAIKORIS Inc. All rights reserved.</p>
+              <div className="flex items-center gap-6">
+                <span>SOC2 Type II Aligned</span>
+                <span>Zero-Noise Verification</span>
+                <a href="#top" className="hover:text-ink transition-colors">Back to Top ↑</a>
+              </div>
             </div>
           </div>
         </footer>
